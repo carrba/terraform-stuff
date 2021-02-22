@@ -37,6 +37,5 @@ module "terraform-azure-vm" {
     source = "./modules/terraform-azure-vm"
     rg = azurerm_resource_group.rg.name
     location = azurerm_resource_group.rg.location
-
     servername = var.servername
 }
