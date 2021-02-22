@@ -10,7 +10,7 @@ terraform {
       resource_group_name   = "RG-terraformstate"
       storage_account_name  = "itbcvsterraformstorage"
       container_name        = "terraformdemo"
-      key                   = "module.terraform.tfstate"
+      key                   = "module_vm_basic.terraform.tfstate"
     }
 }
 
