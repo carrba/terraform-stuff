@@ -22,7 +22,7 @@ variable "vnet_address" {
 # subnet variables
 variable "snet" {
     description = "subnet name"
-    type = string
+    type = list(string)
 }
 
 variable "snet_address" {
