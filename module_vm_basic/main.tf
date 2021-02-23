@@ -26,7 +26,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 module "terraform-azure-vnet" {
-    source = "./modules/terraform-azure-vnet"
+    source = "../modules/terraform-azure-vnet"
     rg = azurerm_resource_group.rg.name
     location = azurerm_resource_group.rg.location
     # rg = var.resource_group_name
@@ -34,7 +34,7 @@ module "terraform-azure-vnet" {
 }
 
 module "terraform-azure-vm" {
-    source = "./modules/terraform-azure-vm"
+    source = "../modules/terraform-azure-vm"
     rg = azurerm_resource_group.rg.name
     location = azurerm_resource_group.rg.location
     servername = var.servername
