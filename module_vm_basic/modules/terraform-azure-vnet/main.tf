@@ -1,3 +1,19 @@
+# terraform
+terraform {
+  required_providers {
+    azure = {
+      source = "hashicorp/azurerm"
+      version = "=2.40.0"
+    }
+  }
+}
+
+# azure provider
+provider "azure" {
+  features {}
+}
+
+
 # create vnet
 resource "azurerm_virtual_network" "vnet" {
   name                = "vnet-dev-eastus-001"

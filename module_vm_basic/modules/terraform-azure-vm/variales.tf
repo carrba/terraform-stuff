@@ -1,4 +1,4 @@
-variable "resource_group_name" {
+variable "rg" {
     type = string
 }
 
@@ -7,7 +7,10 @@ variable "location" {
     default = "eastus"
 }
 
-# terraform-azure-vm module variables
 variable "servername" {
+    type = string
+}
+
+variable "subnetid" {
     type = string
 }

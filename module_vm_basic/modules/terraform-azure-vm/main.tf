@@ -20,23 +20,23 @@ provider "azure" {
 }
 
 # create vm nic
-resource "azurerm_network_interface" "vm1-nic" {
-  name                = "vm1-nic"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+resource "azurerm_network_interface" "vm-nic" {
+  name                = "${var.servername}-nic"
+  location            = var.location
+  resource_group_name = var.rg
 
   ip_configuration {
-    name                          = "vm1-ip-conf"
-    subnet_id                     = azurerm_subnet.subnet.id
+    name                          = "vm-ip-conf"
+    subnet_id                     = var.subnetid
     private_ip_address_allocation = "Dynamic"
   }
 }
 
-resource "azurerm_virtual_machine" "vm1" {
+resource "azurerm_virtual_machine" "vm" {
   name                  = var.servername
-  location              = azurerm_resource_group.rg.location
-  resource_group_name   = azurerm_resource_group.rg.name
-  network_interface_ids = [azurerm_network_interface.vm1-nic.id]
+  location              = var.location
+  resource_group_name   = var.rg
+  network_interface_ids = [azurerm_network_interface.vm-nic.id]
   vm_size               = "Standard_B1s"
 
   # Uncomment this line to delete the OS disk automatically when deleting the VM
@@ -58,7 +58,7 @@ resource "azurerm_virtual_machine" "vm1" {
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name  = "vm1"
+    computer_name  = var.servername
     admin_username = "carrb"
     admin_password = "FGe3sX-jhsafd-ll£ds"
   }
