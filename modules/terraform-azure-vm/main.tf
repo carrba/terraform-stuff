@@ -31,7 +31,7 @@ resource "azurerm_virtual_machine" "vm" {
   location              = var.location
   resource_group_name   = var.rg
   network_interface_ids = [azurerm_network_interface.vm-nic.id]
-  vm_size               = "Standard_B1s"
+  vm_size               = var.vm_size
 
   # Uncomment this line to delete the OS disk automatically when deleting the VM
   delete_os_disk_on_termination = true
@@ -40,10 +40,10 @@ resource "azurerm_virtual_machine" "vm" {
   # delete_data_disks_on_termination = true
 
   storage_image_reference {
-    publisher = "MicrosoftWindowsServer"
-    offer     = "WindowsServer"
-    sku       = "2016-Datacenter"
-    version   = "latest"
+    publisher = var.vm_image.publisher
+    offer     = var.vm_image.offer
+    sku       = var.vm_image.sku
+    version   = var.vm_image.version
   }
   storage_os_disk {
     name              = "${var.servername}-osdisk"

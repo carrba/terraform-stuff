@@ -25,3 +25,20 @@ variable "password" {
     description = "vm user password"
     sensitive = true
 }
+
+variable "vm_image" {
+  type = list(object({
+    publisher   = string
+    offer       = string
+    sku         = string
+    version     = string
+  }))
+  default = [
+    {
+      publisher = "MicrosoftWindowsServer"
+      offer     = "WindowsServer"
+      sku       = "2016-Datacenter"
+      version   = "latest"
+    }
+  ]
+}
