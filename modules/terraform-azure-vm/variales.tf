@@ -26,6 +26,12 @@ variable "password" {
     sensitive = true
 }
 
+variable "vm_size" {
+    type = string
+    description "vm size"
+    default = "Standard_B1s"
+}
+
 variable "vm_image" {
   type = list(object({
     publisher   = string
