@@ -6,12 +6,6 @@ terraform {
             version = "=2.40.0"
         }
     }
-    backend "azurerm" {
-      resource_group_name   = "RG-terraformstate"
-      storage_account_name  = "itbcterraformstorage"
-      container_name        = "terraformdemo"
-      key                   = "dev.terraform.tfstate"
-    }
 }
 
 # azure provider
@@ -26,7 +20,7 @@ resource "azurerm_network_interface" "vm-nic" {
   resource_group_name = var.rg
 
   ip_configuration {
-    name                          = "vm-ip-conf"
+    name                          = "${var.servername}-ip-conf"
     subnet_id                     = var.subnetid
     private_ip_address_allocation = "Dynamic"
   }
@@ -52,15 +46,15 @@ resource "azurerm_virtual_machine" "vm" {
     version   = "latest"
   }
   storage_os_disk {
-    name              = "myosdisk1"
+    name              = "${var.servername}-osdisk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
     computer_name  = var.servername
-    admin_username = "carrb"
-    admin_password = "FGe3sX-jhsafd-ll£ds"
+    admin_username = var.username
+    admin_password = var.password
   }
   os_profile_windows_config {
   }
