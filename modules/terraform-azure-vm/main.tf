@@ -43,7 +43,7 @@ resource "azurerm_virtual_machine" "vm" {
     publisher = var.vm_image.publisher
     offer     = var.vm_image.offer
     sku       = var.vm_image.sku
-    version   = var.vm_image.version
+    version   = var.vm_image.image_version
   }
   storage_os_disk {
     name              = "${var.servername}-osdisk"

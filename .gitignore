@@ -1,3 +1,4 @@
 .terraform*
 remote_storage/
 *.tfvars
+*.tfstate

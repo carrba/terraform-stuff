@@ -43,5 +43,5 @@ module "terraform-azure-vm" {
     publisher = var.vm_image.publisher
     sku = var.vm_image.sku
     offer = var.vm_image.offer
-    version = var.vm_image.version
+    image_version = var.vm_image.image_version
 }

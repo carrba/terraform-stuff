@@ -33,18 +33,11 @@ variable "vm_size" {
 }
 
 variable "vm_image" {
-  type = list(object({
-    publisher   = string
-    offer       = string
-    sku         = string
-    version     = string
-  }))
-  default = [
-    {
+  type = map
+  default = {
       publisher = "MicrosoftWindowsServer"
       offer     = "WindowsServer"
       sku       = "2016-Datacenter"
-      version   = "latest"
-    }
-  ]
+      image_version   = "latest"
+  }
 }
