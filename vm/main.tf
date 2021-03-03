@@ -29,6 +29,10 @@ module "terraform-azure-vnet" {
     source = "../modules/terraform-azure-vnet"
     rg = azurerm_resource_group.rg.name
     location = azurerm_resource_group.rg.location
+    vnet = var.vnet
+    vnet_address = var.vnet_address
+    snet = var.snet
+    snet_address = var.snet_address
 }
 
 module "terraform-azure-vm" {
@@ -40,8 +44,8 @@ module "terraform-azure-vm" {
     vm_size = var.vm_size
     username = var.username
     password = var.password
-    publisher = var.vm_image.publisher
-    sku = var.vm_image.sku
-    offer = var.vm_image.offer
-    image_version = var.vm_image.image_version
+    publisher = var.publisher
+    sku = var.sku
+    offer = var.offer
+    image_version = var.image_version
 }

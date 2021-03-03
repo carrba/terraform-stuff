@@ -7,6 +7,29 @@ variable "location" {
     default = "eastus"
 }
 
+# terraform-azure-vnet module variables
+variable "vnet" {
+    description = "vnet name"
+    type = string
+}
+
+variable "vnet_address" {
+    description = "vnet address space"
+    type = list(string)
+}
+
+# subnet variables
+variable "snet" {
+    description = "subnet name"
+    type = list(string)
+}
+
+variable "snet_address" {
+    description = "subnet address prefixes"
+    type = list(string)
+}
+
+
 # terraform-azure-vm module variables
 variable "servername" {
     type = string
@@ -29,12 +52,23 @@ variable "vm_size" {
     default = "Standard_B1s"
 }
 
-variable "vm_image" {
-  type = map
-  default = {
-      publisher = "MicrosoftWindowsServer"
-      offer     = "WindowsServer"
-      sku       = "2016-Datacenter"
-      image_version   = "latest"
-  }
+variable "publisher" {
+   type = string 
+   description = "os image publisher"
+}
+
+variable "offer" {
+   type = string 
+   description = "os image offer"
+}
+
+variable "sku" {
+   type = string 
+   description = "os image sku"
+}
+
+variable "image_version" {
+   type = string 
+   description = "os image version"
+   default = "latest"
 }

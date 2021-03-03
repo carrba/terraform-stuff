@@ -40,10 +40,10 @@ resource "azurerm_virtual_machine" "vm" {
   # delete_data_disks_on_termination = true
 
   storage_image_reference {
-    publisher = var.vm_image.publisher
-    offer     = var.vm_image.offer
-    sku       = var.vm_image.sku
-    version   = var.vm_image.image_version
+    publisher = var.publisher
+    offer     = var.offer
+    sku       = var.sku
+    version   = var.image_version
   }
   storage_os_disk {
     name              = "${var.servername}-osdisk"

@@ -31,13 +31,23 @@ variable "vm_size" {
     description = "vm size"
     default = "Standard_B1s"
 }
+ variable "publisher" {
+   type = string 
+   description = "os image publisher"
+}
 
-variable "vm_image" {
-  type = map
-  default = {
-      publisher = "MicrosoftWindowsServer"
-      offer     = "WindowsServer"
-      sku       = "2016-Datacenter"
-      image_version   = "latest"
-  }
+variable "offer" {
+   type = string 
+   description = "os image offer"
+}
+
+variable "sku" {
+   type = string 
+   description = "os image sku"
+}
+
+variable "image_version" {
+   type = string 
+   description = "os image sku"
+   default = "latest"
 }
