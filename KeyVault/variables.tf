@@ -1,9 +1,9 @@
 # resource group variables
 variable "rg" {
-    type = string
+  type = string
 }
 
 variable "location" {
-    type = string
-    default = "uksouth"
+  type    = string
+  default = "uksouth"
 }

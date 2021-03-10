@@ -1,3 +1,3 @@
 output "subnetid" {
-    value = azurerm_subnet.subnet.id
+  value = azurerm_subnet.subnet.id
 }

@@ -1,34 +1,34 @@
 # terraform
 terraform {
-    required_providers {
-        azure = {
-            source  = "hashicorp/azurerm"
-            version = "=2.40.0"
-        }
+  required_providers {
+    azure = {
+      source  = "hashicorp/azurerm"
+      version = "=2.40.0"
     }
-    backend "azurerm" {
-      resource_group_name   = "RG-terraformstate"
-      storage_account_name  = "itbcterraformstorage"
-      container_name        = "terraformdemo"
-      key                   = "dev.terraform.tfstate"
-    }
+  }
+  backend "azurerm" {
+    resource_group_name  = "RG-terraformstate"
+    storage_account_name = "itbcterraformstorage"
+    container_name       = "terraformdemo"
+    key                  = "dev.terraform.tfstate"
+  }
 }
 
 # azure provider
 provider "azure" {
-    features {}
+  features {}
 }
 
 # create resource group
 resource "azurerm_resource_group" "rg" {
-    name = "rg-t6"
-    location = "uksouth"
+  name     = "rg-t6"
+  location = "uksouth"
 }
 
 # create vnet
 resource "azurerm_virtual_network" "vnet" {
   name                = "vnet-dev-uksouth-001"
-  address_space       = ["10.0.0.0/16","10.1.0.0/16"]
+  address_space       = ["10.0.0.0/16", "10.1.0.0/16"]
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 }

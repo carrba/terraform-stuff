@@ -1,53 +1,53 @@
 variable "rg" {
-    type = string
+  type = string
 }
 
 variable "location" {
-    type = string
-    default = "eastus"
+  type    = string
+  default = "eastus"
 }
 
 variable "servername" {
-    type = string
+  type = string
 }
 
 variable "subnetid" {
-    type = string
+  type = string
 }
 
 variable "username" {
-    type = string
-    description = "vm username"
+  type        = string
+  description = "vm username"
 }
 
 variable "password" {
-    type = string
-    description = "vm user password"
-    sensitive = true
+  type        = string
+  description = "vm user password"
+  sensitive   = true
 }
 
 variable "vm_size" {
-    type = string
-    description = "vm size"
-    default = "Standard_B1s"
+  type        = string
+  description = "vm size"
+  default     = "Standard_B1s"
 }
- variable "publisher" {
-   type = string 
-   description = "os image publisher"
+variable "publisher" {
+  type        = string
+  description = "os image publisher"
 }
 
 variable "offer" {
-   type = string 
-   description = "os image offer"
+  type        = string
+  description = "os image offer"
 }
 
 variable "sku" {
-   type = string 
-   description = "os image sku"
+  type        = string
+  description = "os image sku"
 }
 
 variable "image_version" {
-   type = string 
-   description = "os image sku"
-   default = "latest"
+  type        = string
+  description = "os image sku"
+  default     = "latest"
 }

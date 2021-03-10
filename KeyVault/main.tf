@@ -1,17 +1,17 @@
 # terraform
 terraform {
-    required_providers {
-        azure = {
-            source  = "hashicorp/azurerm"
-            version = "=2.40.0"
-        }
+  required_providers {
+    azure = {
+      source  = "hashicorp/azurerm"
+      version = "=2.40.0"
     }
-    backend "azurerm" {
-      resource_group_name   = "RG-terraformstate"
-      storage_account_name  = "itbcterraformstorage"
-      container_name        = "terraformdemo"
-      key                   = "KeyVault.terraform.tfstate"
-    }
+  }
+  backend "azurerm" {
+    resource_group_name  = "RG-terraformstate"
+    storage_account_name = "itbcterraformstorage"
+    container_name       = "terraformdemo"
+    key                  = "KeyVault.terraform.tfstate"
+  }
 }
 
 provider "azurerm" {
@@ -26,8 +26,8 @@ data "azurerm_client_config" "current" {}
 
 # create resource group
 resource "azurerm_resource_group" "rg" {
-    name = var.rg
-    location = var.location
+  name     = var.rg
+  location = var.location
 }
 
 resource "azurerm_key_vault" "kv" {
