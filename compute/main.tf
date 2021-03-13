@@ -4,6 +4,13 @@ resource "azurerm_resource_group" "rg" {
   location = var.location
 }
 
+#data "template_file" "init" {
+#  template = file("${path.module}/post-deploy.sh")
+#  cars = {
+#    webservername = var.servername
+#  }
+#}
+
 module "linuxservers" {
   source              = "Azure/compute/azurerm"
   resource_group_name = azurerm_resource_group.rg.name
@@ -12,7 +19,9 @@ module "linuxservers" {
   vnet_subnet_id      = module.network.vnet_subnets[0]
   admin_username      = var.admin_username
   admin_password      = var.admin_password
-  depends_on          = [azurerm_resource_group.example]
+  # custom_data         = base64encode(data.template_file.rendered)
+  custom_data = "touch /tmp/xxx1234.txt"
+  depends_on  = [azurerm_resource_group.example]
 }
 
 module "network" {
