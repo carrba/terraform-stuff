@@ -33,6 +33,6 @@ variable "remote_port" {
 }
 
 variable "source_address_prefixes" {
-  type        = string
+  type        = list(string)
   description = "Allowed source addresses in NSG"
 }
