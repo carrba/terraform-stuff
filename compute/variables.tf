@@ -26,7 +26,7 @@ variable "remote_port" {
   default     = 22
 }
 
-variable "remote_ip" {
+variable "source_address_prefixes" {
   type        = string
-  description = "Allowed remote IP in NSG"
+  description = "Allowed source addresses in NSG"
 }

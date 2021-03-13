@@ -12,15 +12,15 @@ resource "azurerm_resource_group" "example" {
 #}
 
 module "linuxservers" {
-  source              = "Azure/compute/azurerm"
-  resource_group_name = azurerm_resource_group.example.name
-  vm_os_simple        = "UbuntuServer"
-  public_ip_dns       = ["linuxvm1-itbc"] // change to a unique name per datacenter region
-  vnet_subnet_id      = module.network.vnet_subnets[0]
-  admin_username      = var.admin_username
-  admin_password      = var.admin_password
-  remote_port         = var.remote_port
-  remote_ip           = var.remote_ip
+  source                  = "Azure/compute/azurerm"
+  resource_group_name     = azurerm_resource_group.example.name
+  vm_os_simple            = "UbuntuServer"
+  public_ip_dns           = ["linuxvm1-itbc"] // change to a unique name per datacenter region
+  vnet_subnet_id          = module.network.vnet_subnets[0]
+  admin_username          = var.admin_username
+  admin_password          = var.admin_password
+  remote_port             = var.remote_port
+  source_address_prefixes = var.source_address_prefixes
   # custom_data         = base64encode(data.template_file.rendered)
   custom_data = "touch /tmp/xxx1234.txt"
   depends_on  = [azurerm_resource_group.example]
