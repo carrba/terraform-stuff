@@ -4,12 +4,12 @@ resource "azurerm_resource_group" "example" {
   location = var.location
 }
 
-#data "template_file" "init" {
-#  template = file("${path.module}/post-deploy.sh")
-#  cars = {
-#    webservername = var.servername
-#  }
-#}
+data "template_file" "init" {
+  template = file("${path.module}/cloud-init.txt")
+  vars = {
+    webservername = var.servername
+  }
+}
 
 module "linuxservers" {
   source                  = "Azure/compute/azurerm"
@@ -22,8 +22,8 @@ module "linuxservers" {
   admin_password          = var.admin_password
   remote_port             = var.remote_port
   source_address_prefixes = var.source_address_prefixes
-  # custom_data         = base64encode(data.template_file.rendered)
-  custom_data = "touch /tmp/xxx1234.txt"
+  custom_data         = base64encode(data.template_file.init.rendered)
+  # custom_data = "touch /tmp/xxx1234.txt"
   depends_on  = [azurerm_resource_group.example]
 }
 
