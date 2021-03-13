@@ -17,6 +17,7 @@ module "linuxservers" {
   vm_os_simple            = "UbuntuServer"
   public_ip_dns           = ["linuxvm1-itbc"] // change to a unique name per datacenter region
   vnet_subnet_id          = module.network.vnet_subnets[0]
+  vm_hostname             = var.vm_hostname
   admin_username          = var.admin_username
   admin_password          = var.admin_password
   remote_port             = var.remote_port

@@ -9,6 +9,12 @@ variable "location" {
 }
 
 # compute module
+variable "vm_hostname" {
+  type        = string
+  description = "vm hostname"
+  default     = "vm1"
+}
+
 variable "admin_username" {
   type        = string
   description = "Admin username for vm"
