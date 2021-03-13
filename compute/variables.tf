@@ -19,3 +19,14 @@ variable "admin_password" {
   description = "Admin password for vm"
   sensitive   = true
 }
+
+variable "remote_port" {
+  type        = number
+  description = "Allowed port in NSG"
+  default     = 22
+}
+
+variable "remote_ip" {
+  type        = string
+  description = "Allowed remote IP in NSG"
+}

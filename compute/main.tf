@@ -19,6 +19,8 @@ module "linuxservers" {
   vnet_subnet_id      = module.network.vnet_subnets[0]
   admin_username      = var.admin_username
   admin_password      = var.admin_password
+  remote_port         = var.remote_port
+  remote_ip           = var.remote_ip
   # custom_data         = base64encode(data.template_file.rendered)
   custom_data = "touch /tmp/xxx1234.txt"
   depends_on  = [azurerm_resource_group.example]
