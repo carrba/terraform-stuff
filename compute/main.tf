@@ -6,9 +6,9 @@ resource "azurerm_resource_group" "example" {
 
 data "template_file" "init" {
   template = file("${path.module}/cloud-init.txt")
-  vars = {
-    webservername = var.servername
-  }
+  # vars = {
+  #   webservername = var.servername
+  # }
 }
 
 module "linuxservers" {
@@ -25,7 +25,7 @@ module "linuxservers" {
   custom_data             = base64encode(data.template_file.init.rendered)
   nb_instance             = 1
   
-  depends_on  = [azurerm_resource_group.example]
+  depends_on = [azurerm_resource_group.example]
 }
 
 module "windowsservers" {
