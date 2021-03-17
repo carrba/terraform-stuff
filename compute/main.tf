@@ -23,8 +23,8 @@ module "linuxservers" {
   remote_port             = var.remote_port
   source_address_prefixes = var.source_address_prefixes
   custom_data             = base64encode(data.template_file.init.rendered)
-  nb_instance             = 1
-  
+  nb_instances            = 1
+
   depends_on = [azurerm_resource_group.example]
 }
 
@@ -33,11 +33,12 @@ module "windowsservers" {
   resource_group_name = azurerm_resource_group.example.name
   is_windows_image    = true
   vm_hostname         = "mywinvm" // line can be removed if only one VM module per resource group
-  admin_password      = "ComplxP@ssw0rd!"
+  admin_username      = var.admin_username
+  admin_password      = var.admin_password
   vm_os_simple        = "WindowsServer"
-  public_ip_dns       = ["winsimplevmips"] // change to a unique name per datacenter region
+  public_ip_dns       = ["winvm1-itbc"] // change to a unique name per datacenter region
   vnet_subnet_id      = module.network.vnet_subnets[0]
-  nb_instance         = 0
+  nb_instances        = 0
 
   depends_on = [azurerm_resource_group.example]
 }
