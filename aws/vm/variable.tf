@@ -6,7 +6,7 @@ variable "vm_name" {
 variable "region" {
   description = "Default region"
   type        = string
-  default     = "eu_west-1"
+  default     = "eu-west-1"
 }
 
 variable "ami" {
@@ -21,7 +21,7 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "sg" {
+variable "security_group_id" {
   description = "Security group"
   type        = string
 }
