@@ -1,4 +1,4 @@
-variable "vm_name" {
+variable "name" {
   description = "EC2 instance_name"
   type        = string
 }

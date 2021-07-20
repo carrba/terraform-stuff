@@ -14,6 +14,12 @@ resource "aws_network_interface" "nic" {
   subnet_id = var.subnet_id
   # private_ips = var.ip_address
   security_groups = [var.security_group_id]
+
+  tags = {
+    "Name"        = "${var.name}-NIC"
+    "bu"          = "RCTP"
+    "environment" = "dev"
+  }
 }
 
 resource "aws_instance" "ec2" {
@@ -27,6 +33,8 @@ resource "aws_instance" "ec2" {
   }
 
   tags = {
-    "Name" = var.vm_name
+    "Name"        = var.name
+    "bu"          = "RCTP"
+    "environment" = "dev"
   }
 }
