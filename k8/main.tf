@@ -11,7 +11,6 @@ resource "azurerm_resource_group" "rg" {
 
 resource "azurerm_kubernetes_cluster" "aks" {
   name                   = var.aks_name
-  local_account_disabled = var.location
   resource_group_name    = var.resource_group_name
   location               = var.location
   dns_prefix             = var.dns_prefix
