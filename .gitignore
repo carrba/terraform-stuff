@@ -3,3 +3,4 @@ remote_storage/
 *.tfvars
 *.tfstate
 *.tfstate.backup
+my*.txt
