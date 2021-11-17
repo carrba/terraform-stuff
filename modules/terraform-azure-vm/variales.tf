@@ -51,3 +51,14 @@ variable "image_version" {
   description = "os image sku"
   default     = "latest"
 }
+
+variable "environment" {
+  type        = string
+  description = "Environment tag"
+  default     = "dev"
+}
+
+variable "Application" {
+  type        = string
+  description = "Application name"
+}

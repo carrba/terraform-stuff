@@ -12,6 +12,10 @@ module "terraform-azure-vnet" {
   vnet_address = var.vnet_address
   snet         = var.snet
   snet_address = var.snet_address
+  source_ip    = var.source_ip
+  nsg_name     = var.nsg_name
+  environment   = var.environment
+  Application   = var.Application
 }
 
 module "terraform-azure-vm" {
@@ -27,4 +31,6 @@ module "terraform-azure-vm" {
   sku           = var.sku
   offer         = var.offer
   image_version = var.image_version
+  environment   = var.environment
+  Application   = var.Application
 }

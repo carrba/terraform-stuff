@@ -29,3 +29,24 @@ variable "snet_address" {
   description = "subnet address prefixes"
   type        = list(string)
 }
+
+variable "nsg_name" {
+  type = string
+  description = "NSG name"
+}
+
+variable "source_ip" {
+  type = list(string)
+  description = "List of source IPs for NSG rule" 
+}
+
+variable "environment" {
+  type        = string
+  description = "Environment tag"
+  default     = "dev"
+}
+
+variable "Application" {
+  type        = string
+  description = "Application name"
+}

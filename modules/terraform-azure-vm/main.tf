@@ -1,16 +1,14 @@
-# terraform
-terraform {
-  required_providers {
-    azure = {
-      source  = "hashicorp/azurerm"
-      version = "=2.50.0"
-    }
-  }
-}
+# Create public IP
+resource "azurerm_public_ip" "pip" {
+  name                = "${var.servername}-public-IP"
+  resource_group_name = var.rg
+  location            = var.location
+  allocation_method   = "Static"
 
-# azure provider
-provider "azure" {
-  features {}
+  tags = {
+    environment = var.environment
+    Application = var.Application
+  }
 }
 
 # create vm nic
@@ -23,6 +21,7 @@ resource "azurerm_network_interface" "vm-nic" {
     name                          = "${var.servername}-ip-conf"
     subnet_id                     = var.subnetid
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.pip.id
   }
 }
 
